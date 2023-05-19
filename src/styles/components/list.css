@@ -1,0 +1,45 @@
+.list {
+    justify-content: center;
+    border: 1px solid #28a0ff;
+    display: flex;
+    /* gap: 20px; */
+    color: #28a0ff;
+    margin-top: 20px;
+}
+
+.list p {
+    width: 70%;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    word-break: break-all;
+    /* border: 1px solid violet; */
+}
+
+input#check {
+    display: none;
+}
+
+.list .btn_box > label {
+    width: 33.3%;
+    cursor: pointer;
+    border-left: 1px solid #28a0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_box {
+    display: flex;
+    width: 30%;
+}
+
+.btn {
+    width: 33.3%;
+    padding: 0;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
