@@ -6,11 +6,17 @@ import Title from "../components/title";
 
 export default function MainPage() {
     const [todo, setTodo] = useState("");
+    const [todoList, setTodoList] = useState([]);
 
     const submitTodo = (e) => {
         setTodo(e.target.value);
     };
-    console.log(todo);
+
+    const handleAddList = (e) => {
+        e.preventDefault();
+        setTodoList((prev) => [...prev, todo]);
+        setTodo("");
+    };
 
     return (
         <>
@@ -28,17 +34,21 @@ export default function MainPage() {
                     <div className="wrapper">
                         <div className="list_box">
                             <Title value={"Todo List"} />
-                            <List todo={todo} />
+                            <div className="todo_box">
+                                {todoList.map((el) => (
+                                    <List el={el} />
+                                ))}
+                            </div>
                         </div>
-                        <div className="input_box">
+                        <form className="input_box">
                             <Title value={"Add"} />
                             <div className="input">
-                                <input placeholder="Write Your Goals" onChange={submitTodo} />
-                                <button className="plusButton">
+                                <input placeholder="Write Your Goals" value={todo} onChange={submitTodo} />
+                                <button onClick={handleAddList} className="plusButton">
                                     <BsFillPatchPlusFill />
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div className="container">오른쪽</div>

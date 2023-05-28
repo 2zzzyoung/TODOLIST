@@ -3,7 +3,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
 import "../styles/components/list.css";
 
-export default function List({ todo }) {
+export default function List({ el }) {
     const [isCheck, setIsCheck] = useState(false);
     const checkRef = useRef();
 
@@ -20,7 +20,7 @@ export default function List({ todo }) {
     return (
         <>
             <div className="list">
-                <p>{todo}</p>
+                <p>{el}</p>
                 <div className="btn_box">
                     <button className="btn">
                         <AiOutlineEdit />
