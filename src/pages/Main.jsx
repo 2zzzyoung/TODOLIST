@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillPatchPlusFill } from "react-icons/bs";
 import "../styles/pages/main.css";
 import List from "../components/list";
@@ -6,7 +6,11 @@ import Title from "../components/title";
 
 export default function MainPage() {
     const [todo, setTodo] = useState("");
-    const [todoList, setTodoList] = useState([]);
+    const [todoList, setTodoList] = useState(() => getLocalStorage());
+
+    useEffect(() => {
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+    }, [todoList]);
 
     const submitTodo = (e) => {
         setTodo(e.target.value);
@@ -56,3 +60,9 @@ export default function MainPage() {
         </>
     );
 }
+
+const getLocalStorage = () => {
+    const todoData = localStorage.getItem("todoList");
+
+    return todoData ? JSON.parse(todoData) : [];
+};

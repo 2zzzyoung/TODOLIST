@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    background-color: #eed9d4;
 }
 
 .container {
@@ -67,4 +68,19 @@
 .todo_box {
     height: 350px;
     overflow-y: auto;
+}
+
+.todo_box::-webkit-scrollbar {
+    width: 12px;
+}
+
+.todo_box::-webkit-scrollbar-thumb {
+    background-color: #cd5f45;
+    border-radius: 20px;
+}
+
+.todo_box::-webkit-scrollbar-track {
+    background-color: lightgray;
+    margin: 14px 0px;
+    border-radius: 20px;
 }
