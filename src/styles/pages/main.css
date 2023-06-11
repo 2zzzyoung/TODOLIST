@@ -1,0 +1,86 @@
+.wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eed9d4;
+}
+
+.container {
+    min-width: 450px;
+    max-width: 450px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 50px;
+    height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    background-color: #f5d08a;
+}
+
+.input {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input input {
+    width: 85%;
+    height: 25px;
+    padding: 5px 8px;
+    background-color: unset;
+    border: 1px dashed black;
+}
+
+.plusButton {
+    border: none;
+    background-color: unset;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.plusButton:hover {
+    font-size: 26px;
+}
+
+.date {
+    display: flex;
+    gap: 10px;
+}
+
+.date_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.day {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.todo_box {
+    height: 350px;
+    overflow-y: auto;
+}
+
+.todo_box::-webkit-scrollbar {
+    width: 12px;
+}
+
+.todo_box::-webkit-scrollbar-thumb {
+    background-color: #cd5f45;
+    border-radius: 20px;
+}
+
+.todo_box::-webkit-scrollbar-track {
+    background-color: lightgray;
+    margin: 14px 0px;
+    border-radius: 20px;
+}
