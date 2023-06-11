@@ -1,5 +1,6 @@
 .wrap {
     width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: space-between;
     background-color: #eed9d4;
@@ -65,21 +66,21 @@
     font-weight: bold;
 }
 
-.todo_box {
+.todo-box {
     height: 350px;
     overflow-y: auto;
 }
 
-.todo_box::-webkit-scrollbar {
+.todo-box::-webkit-scrollbar {
     width: 12px;
 }
 
-.todo_box::-webkit-scrollbar-thumb {
+.todo-box::-webkit-scrollbar-thumb {
     background-color: #cd5f45;
     border-radius: 20px;
 }
 
-.todo_box::-webkit-scrollbar-track {
+.todo-box::-webkit-scrollbar-track {
     background-color: lightgray;
     margin: 14px 0px;
     border-radius: 20px;
