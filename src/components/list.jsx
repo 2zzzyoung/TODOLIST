@@ -1,9 +1,8 @@
 import { AiOutlineEdit, AiOutlineCheck } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
 import "../styles/components/list.css";
-import { useState } from "react";
 
-export default function List({ todos, onUpdate }) {
+export default function List({ todos, onUpdate, onDelete }) {
     const { id, todo, status } = todos;
     const handleChange = (e) => {
         const updateStatus = e.target.checked ? "completed" : "active";
@@ -11,6 +10,7 @@ export default function List({ todos, onUpdate }) {
         const updateTodos = { ...todos, status: updateStatus };
         onUpdate(updateTodos);
     };
+    const handleDelete = () => onDelete(todos);
     // const [checkbox, setCheckbox] = useState("");
 
     // const onToggleChecked = (id) => {
@@ -23,8 +23,7 @@ export default function List({ todos, onUpdate }) {
     //     setIsChecked(updateCheck);
     //     localStorage.setItem("isChecked", JSON.stringify(updateCheck));
     // };
-    const onDelete = () => {};
-    const onEdit = () => {};
+    // const todoDone = todos.filter((todo) => todo.done);
 
     return (
         <>
@@ -39,10 +38,10 @@ export default function List({ todos, onUpdate }) {
                 <label htmlFor={id}>{status === "completed" ? <AiOutlineCheck className="check" /> : null}</label>
                 <p>{todo}</p>
                 <div className="btn_box">
-                    <button className="btn" onClick={onEdit}>
+                    <button className="btn">
                         <AiOutlineEdit />
                     </button>
-                    <button className="btn" onClick={onDelete}>
+                    <button className="btn" onClick={handleDelete}>
                         <MdDeleteOutline />
                     </button>
                 </div>
