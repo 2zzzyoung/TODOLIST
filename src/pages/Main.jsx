@@ -11,7 +11,7 @@ export default function MainPage() {
         setTodoList([...todoList, todos]);
     };
     const handleUpdate = (updated) => setTodoList(todoList.map((todo) => (todo.id === updated.id ? updated : todo)));
-
+    const handleDelete = (deleted) => setTodoList(todoList.filter((todo) => todo.id !== deleted.id));
     useEffect(() => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
     }, [todoList]);
@@ -32,6 +32,7 @@ export default function MainPage() {
         });
         setTodo("");
     };
+
     return (
         <>
             <div className="wrap">
@@ -50,7 +51,7 @@ export default function MainPage() {
                             <Title value={"Todo List"} />
                             <div className="todo-box">
                                 {todoList.map((el, id) => (
-                                    <List todos={el} key={id} onUpdate={handleUpdate} />
+                                    <List todos={el} key={id} onUpdate={handleUpdate} onDelete={handleDelete} />
                                 ))}
                             </div>
                         </div>
