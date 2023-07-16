@@ -3,6 +3,7 @@ import { BsFillPatchPlusFill } from "react-icons/bs";
 import "../styles/pages/main.css";
 import List from "../components/list";
 import Title from "../components/title";
+import { monthFilter, date, week } from "../components/date";
 
 export default function MainPage() {
     const [todo, setTodo] = useState("");
@@ -12,6 +13,7 @@ export default function MainPage() {
     };
     const handleUpdate = (updated) => setTodoList(todoList.map((todo) => (todo.id === updated.id ? updated : todo)));
     const handleDelete = (deleted) => setTodoList(todoList.filter((todo) => todo.id !== deleted.id));
+
     useEffect(() => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
     }, [todoList]);
@@ -38,10 +40,10 @@ export default function MainPage() {
             <div className="wrap">
                 <div className="container">
                     <div className="date">
-                        <div className="day">14</div>
+                        <div className="day">{date}</div>
                         <div className="date_box">
-                            <div className="week">SATURDAY</div>
-                            <div className="month">OCT</div>
+                            <div className="week">{week.toUpperCase()}</div>
+                            <div className="month">{monthFilter.toUpperCase()}</div>
                         </div>
                     </div>
                 </div>
