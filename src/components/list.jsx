@@ -1,6 +1,7 @@
 import { AiOutlineEdit, AiOutlineCheck } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
 import "../styles/components/list.css";
+import { useEffect, useRef, useState } from "react";
 
 export default function List({ todos, onUpdate, onDelete }) {
     const { id, todo, status } = todos;
@@ -11,19 +12,27 @@ export default function List({ todos, onUpdate, onDelete }) {
         onUpdate(updateTodos);
     };
     const handleDelete = () => onDelete(todos);
-    // const [checkbox, setCheckbox] = useState("");
-
-    // const onToggleChecked = (id) => {
-    //     const updateCheck = isChecked.map((checked) => {
-    //         if (checked.id === id) {
-    //             return { ...checked, completed: !checked.completed };
-    //         }
-    //         return checked;
-    //     });
-    //     setIsChecked(updateCheck);
-    //     localStorage.setItem("isChecked", JSON.stringify(updateCheck));
+    // const [edited, setEdited] = false;
+    // const handleEdit = () => {
+    //     setEdited(true);
     // };
-    // const todoDone = todos.filter((todo) => todo.done);
+    // const [newTodo, setNewTodo] = useState(todo);
+    // const onChangeTodo = (e) => {
+    //     setNewTodo(e.target.value);
+    // };
+    // const onClickEditButton = () => {
+    //     const nextTodo = todos.map((item) => ({ ...item, todo: item.id === todos.id ? setNewTodo : todo }));
+    //     onChangeTodo(newTodo);
+
+    //     setEdited(false);
+    // };
+    // const editInputRef = useRef(null);
+
+    // useEffect(() => {
+    //     if (edited) {
+    //         editInputRef.current.focus();
+    //     }
+    // }, [edited]);
 
     return (
         <>
