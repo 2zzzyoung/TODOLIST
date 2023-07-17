@@ -8,6 +8,7 @@ import { monthFilter, date, week } from "../components/date";
 export default function MainPage() {
     const [todo, setTodo] = useState("");
     const [todoList, setTodoList] = useState(() => getLocalstorage());
+
     const addTodo = (todos) => {
         setTodoList([...todoList, todos]);
     };
