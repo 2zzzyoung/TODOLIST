@@ -14,13 +14,11 @@ export default function List({ todos, onUpdate, onDelete }) {
 
     const handleChange = (e) => {
         const updateStatus = e.target.checked ? "completed" : "active";
-        console.log(e.target.checked);
         const updateTodos = { ...todos, status: updateStatus };
         onUpdate(updateTodos);
     };
     const handleDelete = () => {
         setIsDeleteClicked(true);
-        if (setIsDeleteClicked(true)) return onDelete(todos);
     };
     const handleEdit = () => {
         setIsEditClicked(true);

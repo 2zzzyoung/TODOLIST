@@ -13,7 +13,7 @@ export default function MainPage() {
         setTodoList([...todoList, todos]);
     };
     const handleUpdate = (updated) => setTodoList(todoList.map((todo) => (todo.id === updated.id ? updated : todo)));
-    const handleDelete = (deleted) => setTodoList(todoList.filter((todo) => todo.id !== deleted.id));
+    const handleDelete = (deleted) => setTodoList(todoList.filter((todo) => todo.id !== deleted));
 
     useEffect(() => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
