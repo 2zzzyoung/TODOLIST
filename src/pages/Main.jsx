@@ -3,10 +3,17 @@ import { BsFillPatchPlusFill } from "react-icons/bs";
 import "../styles/pages/main.css";
 import List from "../components/list";
 import Title from "../components/title";
+import { monthFilter, date, week } from "../components/date";
 
 export default function MainPage() {
     const [todo, setTodo] = useState("");
-    const [todoList, setTodoList] = useState(() => getLocalStorage());
+    const [todoList, setTodoList] = useState(() => getLocalstorage());
+
+    const addTodo = (todos) => {
+        setTodoList([...todoList, todos]);
+    };
+    const handleUpdate = (updated) => setTodoList(todoList.map((todo) => (todo.id === updated.id ? updated : todo)));
+    const handleDelete = (deleted) => setTodoList(todoList.filter((todo) => todo.id !== deleted));
 
     useEffect(() => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -18,7 +25,14 @@ export default function MainPage() {
 
     const handleAddList = (e) => {
         e.preventDefault();
-        setTodoList((prev) => [...prev, todo]);
+        if (todo.trim().length === 0) {
+            return;
+        }
+        addTodo({
+            id: todoList.length + 1,
+            todo,
+            status: "active",
+        });
         setTodo("");
     };
 
@@ -27,10 +41,10 @@ export default function MainPage() {
             <div className="wrap">
                 <div className="container">
                     <div className="date">
-                        <div className="day">14</div>
+                        <div className="day">{date}</div>
                         <div className="date_box">
-                            <div className="week">SATURDAY</div>
-                            <div className="month">OCT</div>
+                            <div className="week">{week.toUpperCase()}</div>
+                            <div className="month">{monthFilter.toUpperCase()}</div>
                         </div>
                     </div>
                 </div>
@@ -38,21 +52,21 @@ export default function MainPage() {
                     <div className="wrapper">
                         <div className="list_box">
                             <Title value={"Todo List"} />
-                            <div className="todo_box">
-                                {todoList.map((el) => (
-                                    <List el={el} />
+                            <div className="todo-box">
+                                {todoList.map((el, id) => (
+                                    <List todos={el} key={id} onUpdate={handleUpdate} onDelete={handleDelete} />
                                 ))}
                             </div>
                         </div>
-                        <form className="input_box">
+                        <div className="input_box">
                             <Title value={"Add"} />
-                            <div className="input">
+                            <form className="input" onSubmit={handleAddList}>
                                 <input placeholder="Write Your Goals" value={todo} onChange={submitTodo} />
-                                <button onClick={handleAddList} className="plusButton">
+                                <button className="plusButton">
                                     <BsFillPatchPlusFill />
                                 </button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div className="container">오른쪽</div>
@@ -61,8 +75,8 @@ export default function MainPage() {
     );
 }
 
-const getLocalStorage = () => {
-    const todoData = localStorage.getItem("todoList");
+const getLocalstorage = () => {
+    const todoList = localStorage.getItem("todoList");
 
-    return todoData ? JSON.parse(todoData) : [];
+    return todoList ? JSON.parse(todoList) : [];
 };
