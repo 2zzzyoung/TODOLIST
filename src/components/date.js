@@ -31,16 +31,16 @@ export const monthFilter =
         : "dec";
 
 export const week =
-    todayWeak === "0"
+    todayWeak === 0
         ? "Sunday"
-        : todayWeak === "1"
+        : todayWeak === 1
         ? "Monday"
-        : todayWeak === "2"
+        : todayWeak === 2
         ? "Tuesday"
-        : todayWeak === "3"
+        : todayWeak === 3
         ? "wednesday"
-        : todayWeak === "4"
+        : todayWeak === 4
         ? "Thursday"
-        : todayWeak === "5"
+        : todayWeak === 5
         ? "Friday"
         : "Saturday";

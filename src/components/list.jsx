@@ -45,14 +45,15 @@ export default function List({ todos, onUpdate, onDelete }) {
                     checked={status === "completed"}
                 />
                 <label htmlFor={id}>{status === "completed" ? <AiOutlineCheck className="check" /> : null}</label>
-                {isEditClicked ? (
-                    <div>
-                        <input value={editTodo} onChange={(e) => setEditTodo(e.target.value)} ref={editedText} />
-                    </div>
-                ) : (
-                    <div>{todo}</div>
-                )}
-                {/* <p>{todo}</p> */}
+                <div className="text_box">
+                    {isEditClicked ? (
+                        <div>
+                            <input value={editTodo} onChange={(e) => setEditTodo(e.target.value)} ref={editedText} />
+                        </div>
+                    ) : (
+                        <div className={`${status === "completed" ? "checked" : ""}`}>{todo}</div>
+                    )}
+                </div>
                 <div className="btn_box">
                     {isEditClicked && !isDeleteClicked ? (
                         <div>
@@ -75,7 +76,7 @@ export default function List({ todos, onUpdate, onDelete }) {
                     ) : (
                         <div>
                             <button className="btn" onClick={handleEdit}>
-                                <AiOutlineEdit />
+                                {status === "completed" ? "" : <AiOutlineEdit />}
                             </button>
                             <button className="btn" onClick={handleDelete}>
                                 <MdDeleteOutline />

@@ -39,3 +39,28 @@
 .check_box {
     display: none;
 }
+
+.checked {
+    color: grey;
+    text-decoration-line: line-through;
+}
+
+.text_box {
+    display: flex;
+    align-items: center;
+}
+
+.filter_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 0;
+    color: #fcf8d5;
+}
+
+.category {
+    border: 1px dotted;
+    padding: 5px;
+    background-color: #bacdd3;
+    border: none;
+    cursor: pointer;
+}

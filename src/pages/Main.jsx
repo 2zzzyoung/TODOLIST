@@ -5,7 +5,7 @@ import List from "../components/list";
 import Title from "../components/title";
 import { monthFilter, date, week } from "../components/date";
 
-export default function MainPage() {
+export default function MainPage({ filter, filters, onFilterChange }) {
     const [todo, setTodo] = useState("");
     const [todoList, setTodoList] = useState(() => getLocalstorage());
 
@@ -36,6 +36,8 @@ export default function MainPage() {
         setTodo("");
     };
 
+    const filtered = FilteredTodo(todoList, filter);
+
     return (
         <>
             <div className="wrap">
@@ -52,8 +54,15 @@ export default function MainPage() {
                     <div className="wrapper">
                         <div className="list_box">
                             <Title value={"Todo List"} />
+                            <div className="filter_container">
+                                {filters.map((value, index) => (
+                                    <li key={index}>
+                                        <button onClick={() => onFilterChange(value)}>{value}</button>
+                                    </li>
+                                ))}
+                            </div>
                             <div className="todo-box">
-                                {todoList.map((el, id) => (
+                                {filtered.map((el, id) => (
                                     <List todos={el} key={id} onUpdate={handleUpdate} onDelete={handleDelete} />
                                 ))}
                             </div>
@@ -80,3 +89,10 @@ const getLocalstorage = () => {
 
     return todoList ? JSON.parse(todoList) : [];
 };
+
+function FilteredTodo(todoList, filter) {
+    if (filter === "all") {
+        return todoList;
+    }
+    return todoList.filter((todos) => todos.status === filter);
+}

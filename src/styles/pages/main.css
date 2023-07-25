@@ -85,3 +85,18 @@
     margin: 14px 0px;
     border-radius: 20px;
 }
+
+.filter_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 0;
+    color: #fcf8d5;
+}
+
+.category {
+    border: 1px dotted;
+    padding: 5px;
+    background-color: #bacdd3;
+    border: none;
+    cursor: pointer;
+}
