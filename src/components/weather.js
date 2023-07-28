@@ -49,16 +49,23 @@ export default function Weather() {
     return (
         <>
             <div className="weather_container">
-                <p className="weather_main">
-                    {name}
-                    <FaLocationArrow />
-                </p>
-                <p className="weather_main">{(temp - 273.15).toFixed(0)}℃</p>
-                <div className="weather_box">
+                <div className="weather_top">
+                    <p className="country">
+                        {name}
+                        <p className="arrow">
+                            <FaLocationArrow />
+                        </p>
+                    </p>
+                    <p>{(temp - 273.15).toFixed(0)}℃</p>
+                </div>
+                <div className="weather_bottom">
                     <p>최고:{(temp_max - 273.15).toFixed(0)}℃</p>
                     <p>최저:{(temp_min - 273.15).toFixed(0)}℃</p>
-                    <p>습도: 💧{humidity}%</p>
-                    <p>{weather}</p>
+
+                    <div className="description">
+                        <p>습도: 💧{humidity}%</p>
+                        <p>{weather}</p>
+                    </div>
                 </div>
             </div>
         </>
