@@ -1,0 +1,13 @@
+.weather_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather_main {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.weather_box {
+    color: gray;
+}

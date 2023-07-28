@@ -60,7 +60,14 @@
 .category {
     border: 1px dotted;
     padding: 5px;
-    background-color: #bacdd3;
+    /* background-color: #bacdd3; */
     border: none;
     cursor: pointer;
+}
+
+.edit_input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 250px;
 }

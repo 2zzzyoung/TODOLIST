@@ -5,7 +5,7 @@ export default function Title({ value }) {
         <>
             <div className="titleWrapper">
                 <h1 className="title">{value}</h1>
-                <p>❦</p>
+                {value === "Todo List" ? <p>🦦</p> : <p>✏️</p>}
             </div>
         </>
     );

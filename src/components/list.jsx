@@ -2,7 +2,7 @@ import { AiOutlineEdit, AiOutlineCheck } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick, TiTimes } from "react-icons/ti";
 import "../styles/components/list.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function List({ todos, onUpdate, onDelete }) {
     const { id, todo, status } = todos;
@@ -11,6 +11,11 @@ export default function List({ todos, onUpdate, onDelete }) {
     const [isEditClicked, setIsEditClicked] = useState(false);
     const [isDeleteClicked, setIsDeleteClicked] = useState(false);
     const [editTodo, setEditTodo] = useState("");
+    useEffect(() => {
+        if (isEditClicked) {
+            editedText.current.focus();
+        }
+    }, [isEditClicked]);
 
     const handleChange = (e) => {
         const updateStatus = e.target.checked ? "completed" : "active";
@@ -22,9 +27,12 @@ export default function List({ todos, onUpdate, onDelete }) {
     };
     const handleEdit = () => {
         setIsEditClicked(true);
-        // editedText.current.focus();
     };
+
     const submitEditedContent = () => {
+        if (editTodo.length === 0) {
+            return;
+        }
         onUpdate({ ...todos, todo: editTodo });
         setIsEditClicked(false);
     };
@@ -48,7 +56,12 @@ export default function List({ todos, onUpdate, onDelete }) {
                 <div className="text_box">
                     {isEditClicked ? (
                         <div>
-                            <input value={editTodo} onChange={(e) => setEditTodo(e.target.value)} ref={editedText} />
+                            <input
+                                className="edit_input"
+                                value={editTodo}
+                                onChange={(e) => setEditTodo(e.target.value)}
+                                ref={editedText}
+                            />
                         </div>
                     ) : (
                         <div className={`${status === "completed" ? "checked" : ""}`}>{todo}</div>

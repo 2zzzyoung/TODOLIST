@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BsFillPatchPlusFill } from "react-icons/bs";
+import { VscAdd } from "react-icons/vsc";
 import "../styles/pages/main.css";
 import List from "../components/list";
 import Title from "../components/title";
 import { monthFilter, date, week } from "../components/date";
+import Weather from "../components/weather";
 
 export default function MainPage({ filter, filters, onFilterChange }) {
     const [todo, setTodo] = useState("");
@@ -38,6 +39,10 @@ export default function MainPage({ filter, filters, onFilterChange }) {
 
     const filtered = FilteredTodo(todoList, filter);
 
+    const allClearTodo = () => {
+        setTodoList([]);
+    };
+
     return (
         <>
             <div className="wrap">
@@ -56,8 +61,10 @@ export default function MainPage({ filter, filters, onFilterChange }) {
                             <Title value={"Todo List"} />
                             <div className="filter_container">
                                 {filters.map((value, index) => (
-                                    <li key={index}>
-                                        <button onClick={() => onFilterChange(value)}>{value}</button>
+                                    <li key={index} className="category">
+                                        <button className="filter_btn" onClick={() => onFilterChange(value)}>
+                                            {value}
+                                        </button>
                                     </li>
                                 ))}
                             </div>
@@ -66,19 +73,26 @@ export default function MainPage({ filter, filters, onFilterChange }) {
                                     <List todos={el} key={id} onUpdate={handleUpdate} onDelete={handleDelete} />
                                 ))}
                             </div>
+                            <div className="btn_wrap">
+                                <button className="clear_btn" onClick={allClearTodo}>
+                                    All Clear
+                                </button>
+                            </div>
                         </div>
                         <div className="input_box">
                             <Title value={"Add"} />
                             <form className="input" onSubmit={handleAddList}>
                                 <input placeholder="Write Your Goals" value={todo} onChange={submitTodo} />
                                 <button className="plusButton">
-                                    <BsFillPatchPlusFill />
+                                    <VscAdd />
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div className="container">오른쪽</div>
+                <div className="container">
+                    <Weather />
+                </div>
             </div>
         </>
     );
