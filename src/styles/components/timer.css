@@ -1,5 +1,9 @@
 .timer {
-    font-size: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 36px;
     font-weight: bold;
-    color: gray;
+    color: black;
+    gap: 5px;
+    margin-top: 10px;
 }

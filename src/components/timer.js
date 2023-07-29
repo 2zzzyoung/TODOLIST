@@ -19,7 +19,10 @@ export default function Timer() {
 
     return (
         <>
-            <h1 className="timer">{timer}</h1>
+            <h1 className="timer">
+                <p>🕰</p>
+                <p>{timer}</p>
+            </h1>
         </>
     );
 }

@@ -45,8 +45,8 @@ export default function MainPage({ filter, filters, onFilterChange }) {
     };
 
     return (
-        <>
-            <div className="wrap">
+        <div className="wrap">
+            <div className="wrap_container">
                 <div className="container">
                     <div className="date">
                         <div className="day">{date}</div>
@@ -91,12 +91,14 @@ export default function MainPage({ filter, filters, onFilterChange }) {
                         </div>
                     </div>
                 </div>
-                <div className="container">
-                    <Timer />
-                    <Weather />
+                <div className="container, right_container">
+                    <div className="right_wrap">
+                        <Timer />
+                        <Weather />
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
