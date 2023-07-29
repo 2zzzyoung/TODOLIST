@@ -5,6 +5,7 @@ import List from "../components/list";
 import Title from "../components/title";
 import { monthFilter, date, week } from "../components/date";
 import Weather from "../components/weather";
+import Timer from "../components/timer";
 
 export default function MainPage({ filter, filters, onFilterChange }) {
     const [todo, setTodo] = useState("");
@@ -91,6 +92,7 @@ export default function MainPage({ filter, filters, onFilterChange }) {
                     </div>
                 </div>
                 <div className="container">
+                    <Timer />
                     <Weather />
                 </div>
             </div>
